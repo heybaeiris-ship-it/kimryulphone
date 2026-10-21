@@ -1,0 +1,2444 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #17171c;
+  font-family: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+.iphone {
+  width: 390px;
+  height: 800px;
+  max-width: 96vw;
+  max-height: 96vh;
+  position: relative;
+  overflow: hidden;
+  border: 9px solid #19191d;
+  border-radius: 55px;
+  background: #24243c;
+  box-shadow:
+    0 0 0 3px #4c4c51,
+    0 25px 60px #0008;
+}
+
+/* Dynamic Island */
+.dynamic-island {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 32px;
+  background: #08080b;
+  border-radius: 30px;
+  z-index: 30;
+}
+
+/* Status Bar */
+.status-bar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  padding: 18px 28px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  z-index: 20;
+}
+
+.status-right {
+  display: flex;
+  gap: 7px;
+}
+
+/* Screens */
+.screen {
+  display: none;
+  position: absolute;
+  inset: 0;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* Wallpaper PNG */
+#home {
+  background-image:
+    linear-gradient(#0002, #0003),
+    url("./images/wallpaper.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Widgets */
+.widgets {
+  position: absolute;
+  top: 105px;
+  left: 18px;
+  right: 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.calendar-widget,
+.weather-widget {
+  height: 155px;
+  border-radius: 26px;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.calendar-widget {
+  background: white;
+  color: #151515;
+}
+
+.calendar-widget span {
+  color: #f0443c;
+  font-weight: bold;
+}
+
+.calendar-widget strong {
+  display: block;
+  font-size: 58px;
+  line-height: 1.1;
+}
+
+.calendar-widget p {
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+.calendar-widget small {
+  color: #888;
+}
+
+.weather-widget {
+  background: linear-gradient(#348ee8,#58a8f2);
+  color: white;
+}
+
+.weather-widget span {
+  display: block;
+  text-align: right;
+  color: #ffe449;
+  font-size: 28px;
+}
+
+.weather-widget p {
+  margin: 0;
+  font-size: 15px;
+}
+
+.weather-widget strong {
+  display: block;
+  font-size: 52px;
+  font-weight: 300;
+}
+
+.weather-widget small {
+  font-size: 13px;
+}
+
+/* App Icons */
+.app-grid {
+  position: absolute;
+  top: 290px;
+  left: 14px;
+  right: 14px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px 8px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.app-icon,
+.dock-icon {
+  width: 61px;
+  height: 61px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 3px 8px #0003;
+}
+
+.app-icon svg,
+.dock-icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.photos-icon {
+  background: white;
+}
+
+.mail-icon {
+  background: #2388ed;
+}
+
+.notes-icon {
+  background: white;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.notes-yellow {
+  width: 100%;
+  height: 19px;
+  background: #ffd34f;
+}
+
+.notes-lines {
+  color: #bcbcbc;
+  font-size: 30px;
+}
+
+.settings-icon {
+  background: #9298a3;
+}
+
+/* Dock */
+.dock {
+  position: absolute;
+  bottom: 27px;
+  left: 12px;
+  right: 12px;
+  height: 83px;
+  border-radius: 28px;
+  background: #ffffff45;
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.dock-icon {
+  border: none;
+  font-size: 45px;
+  color: white;
+  cursor: pointer;
+}
+
+.phone-icon,
+.messages-icon {
+  background: #31c85a;
+}
+
+.safari-icon {
+  background: #fff;
+  color: #2388ed;
+}
+
+.music-icon {
+  background: #f43f69;
+}
+
+/* App Screen */
+.app-screen {
+  background: #f5f5f7;
+  padding: 65px 20px 60px;
+  overflow-y: auto;
+  color: #1b1b1d;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header button {
+  border: none;
+  background: transparent;
+  color: #e5a600;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.app-screen h1 {
+  font-size: 32px;
+  margin: 25px 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Notes List */
+.note-item {
+  width: 100%;
+  border: none;
+  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.note-item strong {
+  display: block;
+  font-size: 16px;
+}
+
+.note-item p {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #888;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Notes Editor */
+#note-title {
+  width: 100%;
+  margin-top: 25px;
+  border: none;
+  background: transparent;
+  font-size: 25px;
+  font-weight: bold;
+  outline: none;
+}
+
+#note-body {
+  width: 100%;
+  height: 480px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  line-height: 1.7;
+  font-family: inherit;
+  resize: none;
+  outline: none;
+  margin-top: 15px;
+}
+
+/* Home Indicator */
+.home-button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 28px;
+  border: none;
+  background: transparent;
+  z-index: 40;
+  cursor: pointer;
+}
+
+.home-indicator {
+  display: block;
+  width: 120px;
+  height: 5px;
+  background: white;
+  border-radius: 10px;
+  margin: auto;
+}
+
+/* INSTAGRAM ICON */
+.instagram-icon {
+  background: linear-gradient(
+    35deg,
+    #ffcc54,
+    #ff543e 35%,
+    #c837ab 70%,
+    #6045d5
+  );
+}
+
+/* INSTAGRAM SCREEN */
+.instagram-screen {
+  background: #fff;
+  color: #171717;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  overflow: hidden;
+}
+
+.ig-header,
+.ig-post-header {
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  border-bottom: 1px solid #eee;
+  font-size: 19px;
+}
+
+.ig-header button,
+.ig-post-header button {
+  border: none;
+  background: none;
+  color: #2788ed;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.ig-content {
+  height: calc(100% - 55px);
+  overflow-y: auto;
+  padding-bottom: 35px;
+}
+
+.ig-profile {
+  display: flex;
+  align-items: center;
+  padding: 22px 15px 12px;
+  gap: 20px;
+}
+
+.ig-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e94d94;
+}
+
+.ig-stats {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.ig-stats div {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+.ig-stats strong {
+  font-size: 17px;
+}
+
+.ig-bio {
+  padding: 5px 17px;
+  font-size: 13px;
+}
+
+.ig-bio p {
+  margin: 4px 0;
+}
+
+.ig-follow {
+  display: block;
+  width: calc(100% - 34px);
+  margin: 16px 17px;
+  padding: 9px;
+  background: #2788ed;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.ig-tabs {
+  text-align: center;
+  padding: 15px;
+  border-top: 1px solid #eee;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.ig-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.ig-grid button {
+  border: none;
+  padding: 0;
+  background: #eee;
+  cursor: pointer;
+  aspect-ratio: 1;
+}
+
+.ig-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* OPEN POST */
+.ig-post-view {
+  position: absolute;
+  inset: 0;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  background: white;
+  z-index: 12;
+  overflow-y: auto;
+}
+
+#ig-large-photo {
+  width: 100%;
+  max-height: 390px;
+  object-fit: contain;
+  background: #f1f1f1;
+}
+
+.ig-actions {
+  display: flex;
+  gap: 15px;
+  padding: 10px 18px;
+}
+
+.ig-actions button {
+  border: none;
+  background: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+#ig-caption {
+  padding: 0 18px;
+  font-size: 14px;
+}
+
+#ig-comment-area {
+  padding: 10px 18px;
+}
+
+#ig-comment-input {
+  width: 75%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+}
+
+#ig-comment-area button {
+  border: none;
+  background: none;
+  color: #2788ed;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#ig-comments p {
+  font-size: 13px;
+  padding: 5px 0;
+}
+
+/* =====================================
+   PHONE APP — CLEAN iOS DESIGN
+===================================== */
+
+/* ซ่อน element ที่ยังไม่ใช้งาน */
+.phone-screen .hidden {
+  display: none !important;
+}
+
+/* หน้าจอ Phone */
+.phone-screen {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+  background: linear-gradient(
+    165deg,
+    #777a90 0%,
+    #4b4e65 42%,
+    #1b1e2b 100%
+  );
+
+  color: white;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* ปุ่มกลับ Home */
+.phone-screen .phone-back {
+  position: absolute;
+  top: 105px;
+  left: 25px;
+  z-index: 5;
+
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  color: white;
+  font-size: 17px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+/* รูปและชื่อผู้ติดต่อ */
+.phone-screen .phone-contact {
+  position: absolute;
+  top: 125px;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+/* บังคับให้รูปเป็นวงกลม */
+.phone-screen .phone-contact-photo {
+  display: block;
+
+  width: 110px !important;
+  height: 110px !important;
+  min-width: 110px;
+  min-height: 110px;
+  max-width: 110px;
+  max-height: 110px;
+
+  border-radius: 50% !important;
+  border: 3px solid rgba(255,255,255,0.35);
+
+  object-fit: cover !important;
+  object-position: center;
+  box-sizing: border-box;
+}
+
+/* ชื่อผู้ติดต่อ */
+.phone-screen .phone-contact h1 {
+  margin: 20px 0 5px;
+  padding: 0;
+
+  color: white;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* Calling / Connected */
+.phone-screen #call-status {
+  margin: 0;
+  color: #e5e5ed;
+  font-size: 17px;
+}
+
+/* mobile / เวลาโทร */
+.phone-screen #call-timer {
+  margin-top: 6px;
+  color: #cfd0dc;
+  font-size: 14px;
+}
+
+/* =====================================
+   ปุ่มควบคุม 6 ปุ่ม
+===================================== */
+
+.phone-screen .phone-options {
+  position: absolute;
+
+  /* วางปุ่มไว้ใต้ชื่อและเวลาโทร */
+  top: 58%;
+  bottom: auto;
+
+  left: 25px;
+  right: 25px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  /* ระยะห่างระหว่างปุ่มสองแถว */
+  gap: 20px 10px;
+
+  z-index: 2;
+}
+
+.phone-screen .phone-options button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+
+.phone-screen .phone-option-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 54px;
+  height: 54px;
+
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+
+  color: white;
+  font-size: 24px;
+}
+
+
+/* =====================================
+   ปุ่ม Call และ End
+===================================== */
+
+
+.phone-screen .call-controls {
+  position: absolute;
+
+  /* ปุ่ม End อยู่ด้านล่าง */
+  bottom: 35px;
+
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 3;
+}
+
+.phone-screen .call-button {
+  position: relative;
+
+  width: 76px;
+  height: 76px;
+  border: none;
+  border-radius: 50%;
+
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.phone-screen .call-button.green {
+  background: #30c767;
+}
+
+.phone-screen .call-button.red {
+  background: #f0444f;
+}
+
+.phone-screen .call-button span {
+  position: absolute;
+  top: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  color: white;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* =====================================
+   KEYPAD
+===================================== */
+
+.phone-screen .phone-keypad {
+  position: absolute;
+  inset: 100px 0 40px;
+
+  background: #252839;
+  padding: 20px 35px;
+
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.phone-screen .keypad-back,
+.phone-screen .keypad-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.phone-screen .keypad-back {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.phone-screen #dialed-number {
+  height: 65px;
+  font-size: 26px;
+  color: white;
+}
+
+.phone-screen .keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  justify-items: center;
+}
+
+.phone-screen .keypad-grid button {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.phone-screen .keypad-close {
+  margin-top: 20px;
+}
+
+/* ลดขนาดปุ่ม End */
+.phone-screen #call-end {
+  width: 60px;
+  height: 60px;
+  font-size: 25px;
+}
+
+/* จัดตำแหน่งคำว่า End ใต้ปุ่ม */
+.phone-screen #call-end span {
+  top: 68px;
+  font-size: 13px;
+}
+
+/* ===== INSTAGRAM APP ===== */
+
+.instagram-screen {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  color: #151515;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.instagram-screen .hidden {
+  display: none !important;
+}
+
+.ig-header {
+  position: absolute;
+  top: 65px;
+  left: 0;
+  right: 0;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  border-bottom: 1px solid #eee;
+  background: white;
+  z-index: 3;
+}
+
+.ig-header button,
+.ig-modal-header button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #151515;
+  cursor: pointer;
+}
+
+.ig-header strong {
+  font-size: 16px;
+}
+
+.ig-scroll {
+  position: absolute;
+  top: 120px;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.ig-profile-top {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 15px 12px;
+}
+
+#ig-avatar {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #f0e2eb;
+  cursor: pointer;
+}
+
+.ig-stats {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.ig-stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ig-stats strong {
+  font-size: 16px;
+}
+
+.ig-stats span {
+  font-size: 11px;
+}
+
+.ig-bio {
+  padding: 0 17px 12px;
+  font-size: 13px;
+}
+
+.ig-bio p {
+  margin: 6px 0 0;
+  white-space: pre-line;
+  line-height: 1.5;
+}
+
+.ig-actions {
+  display: flex;
+  gap: 8px;
+  padding: 0 15px 20px;
+}
+
+.ig-actions button {
+  flex: 1;
+  border: none;
+  border-radius: 7px;
+  background: #efeff1;
+  padding: 10px 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ig-stories {
+  display: flex;
+  gap: 14px;
+  padding: 0 15px 18px;
+  overflow-x: auto;
+}
+
+.ig-story-item {
+  flex: 0 0 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: none;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.ig-story-item img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e95c9a;
+  padding: 2px;
+}
+
+.ig-tabs {
+  display: flex;
+  justify-content: space-around;
+  padding: 12px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.ig-tabs button {
+  border: none;
+  background: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.ig-post-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px;
+}
+
+.ig-post-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.ig-empty {
+  grid-column: 1 / -1;
+  padding: 40px 15px;
+  text-align: center;
+  color: #888;
+  font-size: 13px;
+}
+
+/* Instagram editor */
+
+.ig-modal {
+  position: absolute;
+  inset: 0;
+  background: white;
+  z-index: 20;
+  overflow-y: auto;
+}
+
+.ig-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 65px 15px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.ig-modal-header button:last-child {
+  color: #0095f6;
+  font-weight: bold;
+}
+
+.ig-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+}
+
+.ig-form label {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.ig-form input:not([type="file"]),
+.ig-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.ig-edit-avatar {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.ig-upload-label {
+  color: #0095f6;
+  text-align: center;
+  cursor: pointer;
+}
+
+.ig-upload-label input {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+.ig-photo-preview {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Story viewer */
+
+.ig-story-viewer {
+  position: absolute;
+  inset: 0;
+  background: #101010;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ig-story-viewer > img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.ig-story-viewer > span {
+  position: absolute;
+  bottom: 45px;
+  color: white;
+  font-size: 12px;
+}
+
+.ig-story-close {
+  position: absolute;
+  top: 75px;
+  right: 18px;
+  z-index: 2;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.ig-story-progress {
+  position: absolute;
+  top: 65px;
+  left: 12px;
+  right: 12px;
+  height: 3px;
+  background: #777;
+  z-index: 2;
+  border-radius: 3px;
+}
+
+.ig-story-progress div {
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+
+/* ===== INSTAGRAM POST VIEWER ===== */
+
+.instagram-screen .ig-post-viewer {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  color: #111111;
+  z-index: 25;
+  overflow: hidden;
+}
+
+.instagram-screen .ig-post-view-header {
+  position: absolute;
+  top: 65px;
+  left: 0;
+  right: 0;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  border-bottom: 1px solid #eeeeee;
+  background: #ffffff;
+  z-index: 2;
+}
+
+.instagram-screen .ig-post-view-header button {
+  border: none;
+  background: none;
+  font-size: 32px;
+  color: #111111;
+  cursor: pointer;
+}
+
+.instagram-screen .ig-post-view-header strong {
+  font-size: 16px;
+}
+
+.instagram-screen .ig-post-view-header span {
+  width: 25px;
+}
+
+.instagram-screen .ig-post-view-scroll {
+  position: absolute;
+  top: 117px;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+}
+
+.instagram-screen .ig-post-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+}
+
+.instagram-screen .ig-post-author img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.instagram-screen .ig-post-author strong {
+  font-size: 13px;
+}
+
+/* ใช้ชุดนี้เป็นชุดสุดท้าย */
+.instagram-screen .ig-view-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  max-height: none;
+  flex-shrink: 0;
+}
+
+
+
+/* ปุ่ม Like, Comment, Share */
+.instagram-screen .ig-post-interactions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 17px;
+  margin: 0;
+  padding: 10px 15px 4px;
+  font-size: 28px;
+}
+
+/* แคปชัน */
+.instagram-screen .ig-view-caption {
+  display: block;
+  margin: 0;
+  padding: 0 15px 15px;
+  height: auto;
+  min-height: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.instagram-screen .ig-view-caption strong {
+  margin-right: 5px;
+}
+
+/* ชื่อผู้ใช้หน้าแคปชัน */
+.instagram-screen .ig-view-caption strong {
+  margin-right: 5px;
+}
+
+/* ทำให้รูปในตารางรู้ว่ากดได้ */
+.instagram-screen .ig-post-grid img {
+  cursor: pointer;
+}
+
+/* Instagram post interaction icons */
+
+.instagram-screen .ig-post-interactions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px;
+  padding: 12px 15px;
+}
+
+.instagram-screen .ig-comment-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.instagram-screen .ig-comment-icon svg {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+.instagram-screen .ig-like-icon,
+.instagram-screen .ig-share-icon {
+  cursor: pointer;
+}
+
+/* จัดปุ่มและแคปชันให้อยู่ติดกัน */
+
+/* พื้นที่แสดงโพสต์ */
+.instagram-screen .ig-post-view-scroll {
+  position: absolute;
+  top: 117px;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0;
+}
+
+/* แถวหัวใจ คอมเมนต์ แชร์ */
+.instagram-screen .ig-post-interactions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  flex-shrink: 0;
+
+  margin: 0;
+  padding: 10px 15px 2px;
+  font-size: 28px;
+}
+
+/* แคปชัน */
+.instagram-screen .ig-view-caption {
+  display: block;
+  flex-shrink: 0;
+  align-self: stretch;
+
+  margin: 0;
+  padding: 0 15px 15px;
+
+  font-size: 16px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  text-align: left;
+}
+
+/* ชื่อบัญชี */
+.instagram-screen .ig-view-caption strong {
+  margin-right: 5px;
+  font-weight: 600;
+}
+
+
+/* ให้รูป ปุ่ม และแคปชันเรียงติดกัน */
+.instagram-screen .ig-post-view-scroll {
+  display: block !important;
+}
+
+.instagram-screen .ig-post-interactions {
+  margin: 0 !important;
+  padding: 10px 15px 5px !important;
+}
+
+.instagram-screen .ig-view-caption {
+  margin: 0 !important;
+  padding: 0 15px 15px !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* ===== FIX INSTAGRAM CAPTION ===== */
+
+/* แถวปุ่มหัวใจ คอมเมนต์ แชร์ */
+.instagram-screen .ig-post-view-scroll > .ig-post-interactions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 17px;
+
+  margin: 0 !important;
+  padding: 10px 15px 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* จัดแคปชันให้ชิดใต้ปุ่ม */
+.instagram-screen .ig-post-view-scroll > p.ig-view-caption {
+  display: block !important;
+  position: static !important;
+  flex: 0 0 auto !important;
+  align-self: stretch !important;
+
+  margin: 0 !important;
+  padding: 0 15px 15px !important;
+  border: 0 !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+  text-align: left !important;
+  text-indent: 0 !important;
+}
+
+/* ชื่อบัญชีและข้อความแคปชัน */
+.instagram-screen .ig-view-caption strong,
+.instagram-screen .ig-view-caption span {
+  display: inline !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 16px !important;
+  line-height: inherit !important;
+}
+
+/* ชื่อแอคและแคปชันอยู่บรรทัดเดียวกัน */
+.instagram-screen .ig-post-view-scroll > .ig-view-caption {
+  display: block !important;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 !important;
+  padding: 0 15px 15px !important;
+  text-align: left !important;
+  white-space: normal !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+/* ชื่อแอค */
+.instagram-screen .ig-view-caption strong {
+  display: inline !important;
+  font-size: 16px !important;
+  font-weight: 700;
+  margin-right: 5px !important;
+}
+
+/* ข้อความแคปชัน */
+.instagram-screen .ig-view-caption span {
+  display: inline !important;
+  font-size: 16px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  white-space: normal !important;
+}
+
+
+
+/* ===== MUSIC SCREEN FIT ===== */
+
+.music-screen {
+  position: absolute;
+  inset: 0;/* ===== SPOTIFY STYLE MUSIC APP ===== */
+
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+  background: #121212;
+  color: #ffffff;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  border-radius: inherit;
+}
+
+.music-screen .music-library,
+.music-screen .music-player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.music-screen .hidden {
+  display: none !important;
+}
+
+.music-screen button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.music-library,
+.music-player {
+  position: absolute;
+  inset: 0;
+  background: #121212;
+}
+
+.music-topbar {
+  position: absolute;
+  top: 65px;
+  left: 0;
+  right: 0;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.music-topbar button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+}
+
+.music-topbar strong {
+  font-size: 16px;
+}
+
+.music-scroll {
+  position: absolute;
+  top: 120px;
+  bottom: 105px;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.music-playlist-info {
+  padding: 18px 20px 5px;
+  text-align: center;
+}
+
+.music-playlist-info img {
+  width: 68%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 10px 30px #0008;
+}
+
+.music-playlist-info h1 {
+  margin: 18px 0 7px;
+  font-size: 23px;
+}
+
+.music-playlist-info p {
+  color: #b3b3b3;
+  font-size: 12px;
+}
+
+.music-playlist-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 22px;
+}
+
+.music-playlist-actions span {
+  font-size: 30px;
+  color: #b3b3b3;
+}
+
+.music-playlist-actions button {
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 50%;
+  background: #1ed760;
+  color: #000;
+  font-size: 23px;
+}
+
+.music-song-list {
+  padding: 0 15px 20px;
+}
+
+.music-song-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 0;
+  cursor: pointer;
+}
+
+.music-song-item img {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.music-song-item-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.music-song-item-info strong {
+  font-size: 14px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.music-song-item-info span {
+  color: #b3b3b3;
+  font-size: 12px;
+}
+
+.music-song-item.active strong {
+  color: #1ed760;
+}
+
+.music-song-more {
+  color: #b3b3b3;
+  font-size: 20px;
+}
+
+/* Mini Player */
+
+.music-mini-player {
+  position: absolute;
+  bottom: 35px;
+  left: 10px;
+  right: 10px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  background: #303030;
+  border-radius: 9px;
+  z-index: 4;
+}
+
+.music-mini-player > img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.music-mini-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.music-mini-info strong {
+  font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.music-mini-info span {
+  color: #c9c9c9;
+  font-size: 11px;
+}
+
+.music-mini-player button {
+  border: none;
+  background: none;
+  color: white;
+  font-size: 22px;
+}
+
+.music-mini-progress {
+  position: absolute;
+  bottom: 0;
+  left: 8px;
+  right: 8px;
+  height: 3px;
+  background: #666;
+}
+
+#music-mini-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: #1ed760;
+}
+
+/* Full Player */
+
+.music-player {
+  z-index: 5;
+  background: linear-gradient(180deg, #343434, #171717 55%, #101010);
+  padding: 0 25px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.music-player-header {
+  margin-top: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.music-player-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 30px;
+}
+
+.music-player-header div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.music-player-header div span {
+  color: #b3b3b3;
+  font-size: 9px;
+}
+
+.music-player-header div strong {
+  font-size: 12px;
+}
+
+.music-player-cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  margin: 35px auto 28px;
+  border-radius: 6px;
+  box-shadow: 0 15px 35px #0008;
+}
+
+.music-player-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.music-player-info h2 {
+  margin: 0 0 6px;
+  font-size: 23px;
+}
+
+.music-player-info p {
+  margin: 0;
+  color: #b3b3b3;
+  font-size: 14px;
+}
+
+.music-player-info > span {
+  font-size: 27px;
+  color: #1ed760;
+}
+
+.music-progress {
+  width: 100%;
+  margin: 30px 0 7px;
+  accent-color: #1ed760;
+  cursor: pointer;
+}
+
+.music-times {
+  display: flex;
+  justify-content: space-between;
+  color: #b3b3b3;
+  font-size: 11px;
+}
+
+.music-player-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.music-player-controls button {
+  border: none;
+  background: none;
+  color: white;
+  font-size: 26px;
+}
+
+#music-main-play {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: white;
+  color: #111;
+  font-size: 28px;
+}
+
+.music-player-controls button.music-active {
+  color: #1ed760;
+}
+
+.music-volume-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 35px;
+}
+
+.music-volume-row input {
+  flex: 1;
+  min-width: 0;
+  accent-color: #1ed760;
+}
+
+/* ===== SPOTIFY HOME ICON ===== */
+
+.spotify-icon {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background: #1ed760 !important;
+  border: none !important;
+  border-radius: 20% !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+.spotify-icon svg {
+  display: block;
+  width: 72%;
+  height: 72%;
+  fill: none;
+  stroke: #101010;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+/* Spotify icon in iPhone Dock */
+.dock .spotify-dock-icon {
+  background: #1ed760;
+  border: none;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 22%;
+}
+
+.dock .spotify-dock-icon svg {
+  display: block;
+  width: 72%;
+  height: 72%;
+  fill: none;
+  stroke: #101010;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+/* ===== iOS LOCK SCREEN ===== */
+
+.iphone {
+  position: relative;
+}
+
+#lock-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+  border-radius: inherit;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.15), transparent 45%),
+    url("./images/lock-wallpaper.PNG") center/cover no-repeat,
+    linear-gradient(150deg, #263663, #a77cb5, #eab6a6);
+}
+
+#lock-screen[hidden],
+#passcode-screen[hidden],
+#unlock-trigger[hidden] {
+  display: none !important;
+}
+
+/* วันที่และเวลา */
+#lock-screen .lock-top {
+  position: absolute;
+  top: 110px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+#lock-screen .lock-date {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+#lock-screen .lock-time {
+  font-size: 82px;
+  font-weight: 600;
+  letter-spacing: -5px;
+  line-height: 1.1;
+}
+
+/* ปุ่มด้านล่าง */
+#lock-screen .lock-bottom {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  padding: 0 26px;
+  text-align: center;
+}
+
+#lock-screen .lock-shortcuts {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+#lock-screen .lock-shortcut {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.22);
+  backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+#lock-screen .unlock-trigger {
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 14px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+#lock-screen .lock-home-indicator {
+  width: 110px;
+  height: 4px;
+  border-radius: 8px;
+  background: white;
+  margin: 8px auto 0;
+}
+
+/* หน้ากรอกรหัส */
+#lock-screen .passcode-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 115px 20px 35px;
+
+  background: rgba(25, 25, 50, .4);
+  backdrop-filter: blur(25px);
+}
+
+#lock-screen .passcode-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+#lock-screen .passcode-title {
+  font-size: 19px;
+}
+
+#lock-screen .passcode-dots {
+  display: flex;
+  gap: 15px;
+}
+
+#lock-screen .passcode-dots span {
+  width: 11px;
+  height: 11px;
+  border: 1.5px solid white;
+  border-radius: 50%;
+}
+
+#lock-screen .passcode-dots span.filled {
+  background: white;
+}
+
+#lock-screen .passcode-error {
+  min-height: 18px;
+  font-size: 12px;
+  color: #ffd6d6;
+}
+
+#lock-screen .passcode-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#lock-screen .passcode-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px 20px;
+  width: min(100%, 245px);
+  justify-items: center;
+}
+
+#lock-screen .passcode-keypad button {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(255,255,255,.24);
+  backdrop-filter: blur(14px);
+  color: white;
+
+  font-size: 27px;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#lock-screen .passcode-keypad button small {
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-top: 4px;
+  min-height: 9px;
+}
+
+#lock-screen .passcode-keypad button:active {
+  background: rgba(255,255,255,.45);
+}
+
+#lock-screen .passcode-cancel {
+  margin-top: 14px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+#photos-app .photos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+#photos-app .photos-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+/* ===== FIX PHOTOS APP ===== */
+
+/* พื้นหลังและสีตัวอักษร */
+#photos-app {
+  background: #ffffff !important;
+  color: #111111 !important;
+  overflow: hidden;
+}
+
+/* ส่วนหัว Photos */
+#photos-app .photos-header {
+  background: #ffffff !important;
+  color: #111111 !important;
+  z-index: 5;
+}
+
+#photos-app .photos-content {
+  background: #ffffff !important;
+  color: #111111 !important;
+}
+
+/* รูปภาพแบบตาราง */
+#photos-app .photos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px;
+}
+
+#photos-app .photos-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+/* หน้าขยายรูป ต้องอยู่ด้านหน้าสุด */
+#photos-app #photos-viewer {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 50 !important;
+  background: #000000 !important;
+}
+
+/* ซ่อนหน้าขยายรูปเมื่อยังไม่ได้คลิก */
+#photos-app #photos-viewer[hidden] {
+  display: none !important;
+}
+
+/* แสดงหน้าขยายรูปเมื่อคลิก */
+#photos-app #photos-viewer:not([hidden]) {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* รูปใหญ่ต้องอยู่ในกรอบ iPhone */
+#photos-app #photos-full-image {
+  max-width: 100%;
+  max-height: 85%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ปุ่มกลับจากหน้าขยายรูป */
+#photos-app .photos-back {
+  position: absolute;
+  top: 65px;
+  left: 20px;
+  z-index: 51;
+  color: white;
+  background: transparent;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+}
+#photos-app #photos-viewer {
+  touch-action: pan-y;
+}
+
+
+/* ===== FIX PHOTOS LAYOUT ===== */
+
+/* ส่วนหัว Home / Photos */
+#photos-app .photos-header {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  height: 54px;
+  padding: 0 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #ffffff !important;
+  z-index: 20;
+}
+
+#photos-app .photos-header button {
+  background: transparent;
+  border: none;
+  color: #007aff;
+  font-size: 16px;
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+#photos-app .photos-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #111;
+}
+
+/* เนื้อหาทั้งหมดต้องเริ่มใต้ส่วนหัว */
+#photos-app .photos-content {
+  position: absolute;
+  top: 114px;
+  bottom: 65px;
+  left: 0;
+  right: 0;
+
+  overflow-y: auto;
+  background: #ffffff !important;
+  z-index: 1;
+}
+
+/* หัวข้อ Library */
+#photos-app .photos-content h3 {
+  position: static;
+  margin: 12px 16px 18px;
+  font-size: 24px;
+  color: #111;
+}
+
+/* ตารางรูปภาพ */
+#photos-app .photos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px;
+}
+
+#photos-app .photos-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+
+/* ===== IMESSAGE V2 ===== */
+
+#messages-app {
+  background: #fff;
+  color: #111;
+  overflow: hidden;
+}
+
+#messages-app .messages-page {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+}
+
+#messages-app .messages-page[hidden] {
+  display: none !important;
+}
+
+/* หน้ารายชื่อ */
+#messages-app .messages-list-header {
+  padding: 65px 18px 10px;
+}
+
+#messages-app .messages-list-header button {
+  border: 0;
+  background: transparent;
+  color: #007aff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#messages-app .messages-list-header h1 {
+  font-size: 31px;
+  margin: 15px 0 5px;
+}
+
+#messages-app .messages-search {
+  padding: 0 15px 12px;
+}
+
+#messages-app .messages-search input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 0;
+  border-radius: 12px;
+  background: #f0f0f4;
+  font-size: 15px;
+}
+
+#messages-app .messages-conversations {
+  position: absolute;
+  top: 185px;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+}
+
+#messages-app .conversation-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  border: 0;
+  border-bottom: 1px solid #eee;
+  background: white;
+  text-align: left;
+  cursor: pointer;
+}
+
+#messages-app .conversation-avatar,
+#messages-app #messages-contact-photo {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+#messages-app .conversation-info {
+  flex: 1;
+  min-width: 0;
+}
+
+#messages-app .conversation-info strong {
+  display: block;
+  font-size: 15px;
+  color: #111;
+}
+
+#messages-app .conversation-info span {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* หน้าห้องแชท */
+#messages-app .messages-chat-header {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  right: 0;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  z-index: 3;
+}
+
+#messages-app .messages-chat-header button {
+  background: none;
+  border: none;
+  color: #007aff;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+#messages-app #messages-contact-photo {
+  width: 42px;
+  height: 42px;
+}
+
+#messages-app .messages-contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+#messages-app .messages-contact-details strong {
+  font-size: 15px;
+}
+
+#messages-app .messages-contact-details small {
+  font-size: 11px;
+  color: #999;
+}
+
+/* ข้อความ */
+#messages-app .messages-chat {
+  position: absolute;
+  top: 120px;
+  bottom: 110px;
+  left: 0;
+  right: 0;
+  padding: 15px 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+#messages-app .message-bubble {
+  max-width: 78%;
+  padding: 10px 14px;
+  border-radius: 19px;
+  font-size: 15px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  flex-shrink: 0;
+}
+
+#messages-app .message-bubble.me {
+  align-self: flex-end;
+  background: #007aff;
+  color: white;
+  border-bottom-right-radius: 5px;
+}
+
+#messages-app .message-bubble.them {
+  align-self: flex-start;
+  background: #e9e9eb;
+  color: #111;
+  border-bottom-left-radius: 5px;
+}
+
+/* ช่องพิมพ์ */
+#messages-app .messages-compose {
+  position: absolute;
+  bottom: 55px;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #fff;
+  border-top: 1px solid #eee;
+  box-sizing: border-box;
+}
+
+#messages-app .messages-compose input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 22px;
+  font-size: 15px;
+}
+
+#messages-app .messages-compose button {
+  width: 37px;
+  height: 37px;
+  border: none;
+  border-radius: 50%;
+  background: #007aff;
+  color: #fff;
+  font-size: 23px;
+  cursor: pointer;
+}
