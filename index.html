@@ -1,571 +1,835 @@
-
 <!DOCTYPE html>
+
 <html lang="th">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport"
+
         content="width=device-width, initial-scale=1.0">
+
   <title>My iPhone ♡</title>
+
   <link rel="stylesheet" href="./style.css">
+
 </head>
+
 <body>
 
 <div class="iphone">
+
   <!-- ===== LOCK SCREEN ===== -->
+
   <div id="lock-screen" class="lock-screen">
 
     <div class="lock-top">
+
       <div id="lock-date" class="lock-date"></div>
+
       <div id="lock-time" class="lock-time"></div>
+
     </div>
 
     <div class="lock-bottom">
+
       <div class="lock-shortcuts">
+
         <div class="lock-shortcut">⌁</div>
+
         <div class="lock-shortcut">📷</div>
+
       </div>
 
       <button id="unlock-trigger"
+
         class="unlock-trigger"
+
         onclick="showPasscode()">
+
         Swipe up to unlock
+
       </button>
 
       <div class="lock-home-indicator"></div>
+
     </div>
 
     <div id="passcode-screen" class="passcode-screen" hidden>
 
       <div class="passcode-top">
+
         <div class="passcode-lock-icon">🔒</div>
+
         <div class="passcode-title">Enter Passcode</div>
 
         <div id="passcode-dots" class="passcode-dots">
+
           <span></span><span></span><span></span>
+
           <span></span><span></span><span></span>
+
         </div>
 
         <div id="passcode-error" class="passcode-error"></div>
+
       </div>
 
       <div class="passcode-bottom">
+
         <div class="passcode-keypad">
+
           <button onclick="pressPasscode('1')">1<small></small></button>
+
           <button onclick="pressPasscode('2')">2<small>ABC</small></button>
+
           <button onclick="pressPasscode('3')">3<small>DEF</small></button>
+
           <button onclick="pressPasscode('4')">4<small>GHI</small></button>
+
           <button onclick="pressPasscode('5')">5<small>JKL</small></button>
+
           <button onclick="pressPasscode('6')">6<small>MNO</small></button>
+
           <button onclick="pressPasscode('7')">7<small>PQRS</small></button>
+
           <button onclick="pressPasscode('8')">8<small>TUV</small></button>
+
           <button onclick="pressPasscode('9')">9<small>WXYZ</small></button>
+
           <span></span>
+
           <button onclick="pressPasscode('0')">0<small></small></button>
+
           <button onclick="deletePasscode()">⌫</button>
+
         </div>
 
         <button class="passcode-cancel" onclick="cancelPasscode()">
+
           Cancel
+
         </button>
+
       </div>
 
     </div>
+
   </div>
+
   <!-- ===== END LOCK SCREEN ===== -->
 
   <div class="dynamic-island"></div>
 
   <div class="status-bar">
+
     <span id="clock">9:41</span>
+
     <div class="status-right">
+
       <span>▂▄▆</span>
+
       <span>◉</span>
+
       <span>▰</span>
+
     </div>
+
   </div>
 
   <!-- HOME SCREEN -->
+
   <main id="home" class="screen active">
 
     <div class="widgets">
+
       <div class="calendar-widget">
+
         <span id="widget-day">Tuesday</span>
+
         <strong id="widget-date">20</strong>
+
         <p>My special event</p>
+
         <small>Lngshot COMEBACK</small>
+
       </div>
 
       <div class="weather-widget">
+
         <span>☀</span>
+
         <p>Seoul ↗</p>
+
         <strong>18°</strong>
+
         <small>Mostly Sunny</small>
+
       </div>
+
     </div>
 
     <div class="app-grid">
 
 <button class="app" onclick="openInstagram()">
+
   <span class="app-icon instagram-icon">
+
     <svg viewBox="0 0 64 64" aria-hidden="true">
+
       <rect x="13" y="13" width="38" height="38"
+
         rx="12" fill="none" stroke="white"
+
         stroke-width="5"/>
+
       <circle cx="32" cy="32" r="10"
+
         fill="none" stroke="white"
+
         stroke-width="5"/>
+
       <circle cx="44" cy="20" r="3"
+
         fill="white"/>
+
     </svg>
+
   </span>
+
   <span>Instagram</span>
+
 </button>
+
       <button class="app" onclick="openPhotos()">
+
         <span class="app-icon photos-icon">
+
           <svg viewBox="0 0 64 64">
+
             <g transform="translate(32 32)">
+
               <ellipse cy="-13" rx="8" ry="17"
+
                 fill="#ff4b50"/>
+
               <ellipse cy="-13" rx="8" ry="17"
+
                 fill="#ffae36" transform="rotate(45)"/>
+
               <ellipse cy="-13" rx="8" ry="17"
+
                 fill="#f4d23d" transform="rotate(90)"/>
+
               <ellipse cy="-13" rx="8" ry="17"
+
                 fill="#58c86d" transform="rotate(135)"/>
+
               <ellipse cy="-13" rx="8" ry="17"
+
                 fill="#40b5e5" transform="rotate(180)"/>
+
               <ellipse cy="-13" rx="8" ry="17"
+
                 fill="#6265d9" transform="rotate(225)"/>
+
               <ellipse cy="-13" rx="8" ry="17"
+
                 fill="#b76bd6" transform="rotate(270)"/>
+
               <ellipse cy="-13" rx="8" ry="17"
+
                 fill="#ee6ca7" transform="rotate(315)"/>
+
               <circle r="7" fill="#fff5dd"/>
+
             </g>
+
           </svg>
+
         </span>
+
         <span>Photos</span>
+
       </button>
 
       <button class="app" type="button">
+
         <span class="app-icon mail-icon">
+
           <svg viewBox="0 0 64 64">
+
             <rect x="8" y="16" width="48" height="32"
+
               rx="5" fill="none" stroke="white"
+
               stroke-width="5"/>
+
             <path d="M10 20L32 37L54 20"
+
               fill="none" stroke="white"
+
               stroke-width="5"/>
+
           </svg>
+
         </span>
+
         <span>Mail</span>
+
       </button>
 
       <button class="app" onclick="openApp('notes')">
+
         <span class="app-icon notes-icon">
+
           <span class="notes-yellow"></span>
+
           <span class="notes-lines">☰</span>
+
         </span>
+
         <span>Notes</span>
+
       </button>
 
       <button class="app" type="button">
+
         <span class="app-icon settings-icon">
+
           <svg viewBox="0 0 64 64">
+
             <path fill="#fff" d="M27 5h10l2 8 6 3 8-3 6 9-6 6v8l6 6-6 9-8-3-6 3-2 8H27l-2-8-6-3-8 3-6-9 6-6v-8l-6-6 6-9 8 3 6-3z"/>
+
             <circle cx="32" cy="32" r="12"
+
               fill="#9298a3"/>
+
             <circle cx="32" cy="32" r="7"
+
               fill="#fff"/>
+
           </svg>
+
         </span>
+
         <span>Settings</span>
+
       </button>
 
     </div>
 
     <div class="dock">
+
       <button class="dock-icon phone-icon"
+
               onclick="openApp('phone')"
+
               aria-label="Phone">
+
         <svg viewBox="0 0 64 64">
+
           <path fill="white" d="M19 8c-4 0-9 6-9 12 0 17 17 34 34 34 6 0 12-5 12-9 0-2-2-4-5-6l-9-5-7 7c-7-3-10-6-13-13l7-7-5-9c-2-3-3-4-5-4z"/>
+
         </svg>
+
       </button>
+
       <button class="dock-icon safari-icon" type="button">
+
   ✦
+
 </button>
+
       <button class="dock-icon messages-icon"
+
               onclick="openMessages()"
+
               aria-label="Messages">
+
         <svg viewBox="0 0 64 64">
+
           <path fill="white"
+
             d="M32 11C18 11 7 20 7 32c0 7 4 13 10 17l-2 9 12-6c2 .5 4 .7 5 .7 14 0 25-9 25-21S46 11 32 11z"/>
+
         </svg>
+
       </button>
 
 <button class="dock-icon spotify-dock-icon"
-        onclick="openMusic()"
-        aria-label="Spotify">
-  <svg viewBox="0 0 64 64" aria-hidden="true">
-    <path d="M10 23 Q31 14 54 25"/>
-    <path d="M13 34 Q32 27 51 37"/>
-    <path d="M16 44 Q32 39 48 47"/>
-  </svg>
-</button>
 
+        onclick="openMusic()"
+
+        aria-label="Spotify">
+
+  <svg viewBox="0 0 64 64" aria-hidden="true">
+
+    <path d="M10 23 Q31 14 54 25"/>
+
+    <path d="M13 34 Q32 27 51 37"/>
+
+    <path d="M16 44 Q32 39 48 47"/>
+
+  </svg>
+
+</button>
 
     </div>
 
   </main>
 
   <!-- NOTES APP -->
+
   <section id="notes" class="screen app-screen">
+
     <div id="notes-list">
+
       <div class="app-header">
+
         <button onclick="goHome()">‹ Home</button>
-        <button onclick="createNote()">✎ New</button>
+
+
+
       </div>
+
       <h1>Notes</h1>
+
       <div id="note-items"></div>
+
     </div>
 
     <div id="note-editor" class="hidden">
+
       <div class="app-header">
+
         <button onclick="showNotesList()">‹ Notes</button>
-        <button onclick="deleteNote()">Delete</button>
+
+
+
       </div>
+
       <input id="note-title"
+
              placeholder="Title"
-             oninput="saveNote()">
+
+             readonly>
+
       <textarea id="note-body"
+
                 placeholder="Start writing..."
-                oninput="saveNote()"></textarea>
+
+                readonly></textarea>
+
     </div>
+
   </section>
 
 <!-- INSTAGRAM APP -->
 
 <section id="instagram-app" class="screen instagram-screen">
+
   <div class="ig-header">
+
     <button onclick="goHome()">‹ Home</button>
+
     <strong id="ig-header-username">my.lovely.diary</strong>
-    <button onclick="openIgPostEditor()">＋</button>
+
+
+
   </div>
 
   <div class="ig-scroll">
+
     <div class="ig-profile-top">
-      <img id="ig-avatar" src="" alt="Profile" onclick="openIgProfileEditor()">
+
+      <img id="ig-avatar" src="" alt="Profile">
 
       <div class="ig-stats">
+
         <div><strong id="ig-post-count">0</strong><span>posts</span></div>
+
         <div><strong>248</strong><span>followers</span></div>
+
         <div><strong>180</strong><span>following</span></div>
+
       </div>
+
     </div>
 
     <div class="ig-bio">
+
       <strong id="ig-display-name">My little diary ♡</strong>
+
       <p id="ig-bio-text">♡ little moments, big memories</p>
+
     </div>
 
     <div class="ig-actions">
-      <button onclick="openIgProfileEditor()">Edit profile</button>
-      <button onclick="openIgStoryEditor()">＋ Add story</button>
+
+      <button>Edit profile</button>
+
+
+
     </div>
 
     <div class="ig-stories" id="ig-stories"></div>
 
     <div class="ig-tabs">
-      <button>▦</button>
-      <button onclick="openIgPostEditor()">＋</button>
+
+      <span aria-label="Posts">▦</span>
+
+  
+
     </div>
 
     <div class="ig-post-grid" id="ig-post-grid"></div>
+
   </div>
 
-  <!-- แก้ไขโปรไฟล์ -->
-  <div class="ig-modal hidden" id="ig-profile-modal">
-    <div class="ig-modal-header">
-      <button onclick="closeIgModal()">Cancel</button>
-      <strong>Edit profile</strong>
-      <button onclick="saveIgProfile()">Done</button>
-    </div>
-
-    <div class="ig-form">
-      <img id="ig-edit-avatar-preview" class="ig-edit-avatar" alt="Profile preview">
-      <label class="ig-upload-label">
-        Change profile photo
-        <input id="ig-profile-file" type="file" accept="image/*" onchange="previewIgAvatar(event)">
-      </label>
-
-      <label>Username</label>
-      <input id="ig-edit-username" type="text" maxlength="30">
-
-      <label>Name</label>
-      <input id="ig-edit-name" type="text" maxlength="60">
-
-      <label>Bio</label>
-      <textarea id="ig-edit-bio" rows="4" maxlength="150"></textarea>
-    </div>
-  </div>
-
-  <!-- เพิ่มโพสต์ -->
-  <div class="ig-modal hidden" id="ig-post-modal">
-    <div class="ig-modal-header">
-      <button onclick="closeIgModal()">Cancel</button>
-      <strong>New post</strong>
-      <button onclick="saveIgPost()">Share</button>
-    </div>
-
-    <div class="ig-form">
-      <label>Choose a photo</label>
-      <input id="ig-post-file" type="file" accept="image/*" onchange="previewIgPost(event)">
-      <img id="ig-post-preview" class="ig-photo-preview hidden" alt="Post preview">
-
-      <label>Caption</label>
-      <textarea id="ig-post-caption" rows="4" placeholder="Write a caption..."></textarea>
-    </div>
-  </div>
-
-  <!-- เพิ่มสตอรี่ -->
-  <div class="ig-modal hidden" id="ig-story-modal">
-    <div class="ig-modal-header">
-      <button onclick="closeIgModal()">Cancel</button>
-      <strong>New story</strong>
-      <button onclick="saveIgStory()">Share</button>
-    </div>
-
-    <div class="ig-form">
-      <label>Choose a story photo</label>
-      <input id="ig-story-file" type="file" accept="image/*" onchange="previewIgStory(event)">
-      <img id="ig-story-preview" class="ig-photo-preview hidden" alt="Story preview">
-    </div>
-  </div>
-
-  <!-- ดูสตอรี่ -->
   <div class="ig-story-viewer hidden" id="ig-story-viewer" onclick="closeIgStory()">
+
     <div class="ig-story-progress"><div></div></div>
+
     <button class="ig-story-close" onclick="closeIgStory()">✕</button>
+
     <img id="ig-story-view-image" alt="Story">
+
     <span>Tap to close</span>
+
   </div>
 
 <!-- หน้าดูโพสต์ขนาดใหญ่ -->
+
 <div id="ig-post-viewer" class="ig-post-viewer hidden">
 
   <div class="ig-post-view-header">
+
     <button onclick="closeIgPost()">‹</button>
+
     <strong>Post</strong>
+
     <span></span>
+
   </div>
 
   <div class="ig-post-view-scroll">
 
     <div class="ig-post-author">
+
       <img id="ig-view-avatar" alt="Profile">
+
       <strong id="ig-view-username"></strong>
+
     </div>
 
     <img id="ig-view-image" class="ig-view-image" alt="Post photo">
 
-    
 <div class="ig-post-interactions">
+
   <!-- Like -->
+
   <span class="ig-like-icon">♡</span>
 
   <!-- Comment -->
+
   <span class="ig-comment-icon">
+
     <svg viewBox="0 0 24 24" width="28" height="28"
+
          fill="none" stroke="currentColor"
+
          stroke-width="1.8"
+
          stroke-linecap="round"
+
          stroke-linejoin="round">
+
       <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5
+
                9 9 0 0 1-4-.9L3 21l1.9-5.5
+
                a9 9 0 0 1-.9-4
+
                A8.5 8.5 0 0 1 12.5 3
+
                8.5 8.5 0 0 1 21 11.5z"/>
+
     </svg>
+
   </span>
 
   <!-- Share -->
+
   <span class="ig-share-icon">➤</span>
+
 </div>
 
-
     <p class="ig-view-caption">
+
       <strong id="ig-caption-username"></strong>
+
       <span id="ig-view-caption"></span>
+
     </p>
 
   </div>
+
 </div>
+
 </section>
 
-
-
 <!-- PHONE APP -->
 
 <!-- PHONE APP -->
+
 <section id="phone-app" class="screen phone-screen">
 
   <!-- กลับหน้า Home -->
+
   <button class="phone-back" onclick="goHome()">
+
     ‹ Home
+
   </button>
 
   <!-- รูปและชื่อผู้ติดต่อ -->
+
   <div class="phone-contact">
 
     <img
+
       src="./images/phone-profile.jpg"
+
       alt="Contact Photo"
+
       class="phone-contact-photo"
+
     >
 
     <h1>권오율 ♡</h1>
 
     <p id="call-status">Ready to call</p>
+
     <span id="call-timer">mobile</span>
 
   </div>
 
   <!-- ปุ่มระหว่างโทร -->
+
   <div id="phone-options" class="phone-options hidden">
 
     <button onclick="toggleMute(this)">
+
       <span class="phone-option-circle">🎙</span>
+
       <span>mute</span>
+
     </button>
 
     <button onclick="showKeypad()">
+
       <span class="phone-option-circle">▦</span>
+
       <span>keypad</span>
+
     </button>
 
     <button onclick="toggleSpeaker(this)">
+
       <span class="phone-option-circle">◖))</span>
+
       <span>speaker</span>
+
     </button>
 
     <button disabled>
+
       <span class="phone-option-circle">＋</span>
+
       <span>add call</span>
+
     </button>
 
     <button disabled>
+
       <span class="phone-option-circle">▣</span>
+
       <span>FaceTime</span>
+
     </button>
 
     <button disabled>
+
       <span class="phone-option-circle">♙</span>
+
       <span>contacts</span>
+
     </button>
 
   </div>
 
   <!-- ปุ่มควบคุมการโทร -->
+
   <div class="call-controls">
 
     <button
+
       id="call-start"
+
       class="call-button green"
+
       onclick="startCall()">
+
       ☎
+
       <span>Call</span>
+
     </button>
 
     <button
+
       id="call-answer"
+
       class="call-button green hidden"
+
       onclick="answerCall()">
+
       ☎
+
       <span>Answer</span>
+
     </button>
 
     <button
+
       id="call-end"
+
       class="call-button red hidden"
+
       onclick="endCall()">
+
       ☎
+
       <span>End</span>
+
     </button>
 
   </div>
 
   <!-- Keypad -->
+
   <div id="phone-keypad" class="phone-keypad hidden">
 
     <button class="keypad-back" onclick="hideKeypad()">
+
       ‹ Back
+
     </button>
 
     <div id="dialed-number"></div>
 
     <div class="keypad-grid">
+
       <button onclick="dialNumber('1')">1</button>
+
       <button onclick="dialNumber('2')">2</button>
+
       <button onclick="dialNumber('3')">3</button>
+
       <button onclick="dialNumber('4')">4</button>
+
       <button onclick="dialNumber('5')">5</button>
+
       <button onclick="dialNumber('6')">6</button>
+
       <button onclick="dialNumber('7')">7</button>
+
       <button onclick="dialNumber('8')">8</button>
+
       <button onclick="dialNumber('9')">9</button>
+
       <button onclick="dialNumber('*')">*</button>
+
       <button onclick="dialNumber('0')">0</button>
+
       <button onclick="dialNumber('#')">#</button>
+
     </div>
 
     <button class="keypad-close" onclick="hideKeypad()">
+
       Done
+
     </button>
 
   </div>
 
   <!-- เสียงโทรศัพท์ -->
+
   <audio
+
     id="ringtone"
+
     src="./audio/ringtone.mp3"
+
     preload="auto"
+
     loop>
+
   </audio>
 
   <audio
+
     id="voice-audio"
+
     src="./audio/voice.mp3"
+
     preload="auto">
+
   </audio>
 
 </section>
 
 <!-- ===== SPOTIFY MUSIC APP ===== -->
+
 <section id="music-app" class="screen music-screen">
 
   <div class="spotify-library" id="spotify-library">
 
     <header class="spotify-header">
+
       <button onclick="spotifyGoHome()">‹ Home</button>
+
       <strong>Your Library</strong>
+
       <span>•••</span>
+
     </header>
 
     <div class="spotify-content">
 
       <div class="spotify-playlist">
+
         <img id="spotify-playlist-cover"
-             src="./images/my-playlist.JPG"
+
+             src="./images/spotify-cover.jpg"
+
              alt="Playlist cover">
 
         <h1>For Us</h1>
+
         <p>ryul kim · <span id="spotify-count"></span></p>
+
       </div>
 
       <div class="spotify-actions">
+
         <span>♡</span>
+
         <button onclick="spotifyPlaySong(0)">▶</button>
+
       </div>
 
       <div id="spotify-song-list"></div>
@@ -573,12 +837,19 @@
     </div>
 
     <div id="spotify-mini" class="spotify-mini" hidden>
+
       <img id="spotify-mini-cover" alt="">
+
       <div class="spotify-mini-info" onclick="spotifyOpenPlayer()">
+
         <strong id="spotify-mini-title"></strong>
+
         <span id="spotify-mini-artist"></span>
+
       </div>
+
       <button id="spotify-mini-toggle" onclick="spotifyToggle()">▶</button>
+
     </div>
 
   </div>
@@ -586,138 +857,219 @@
   <div id="spotify-player" class="spotify-player" hidden>
 
     <header class="spotify-player-header">
+
       <button onclick="spotifyClosePlayer()">⌄</button>
+
       <div>
+
         <small>PLAYING FROM PLAYLIST</small>
+
         <strong>my favorite songs ♡</strong>
+
       </div>
+
       <span>•••</span>
+
     </header>
 
     <div class="spotify-player-content">
+
       <img id="spotify-cover" class="spotify-cover" alt="Album cover">
 
       <div class="spotify-track-info">
+
         <div>
+
           <h2 id="spotify-title"></h2>
+
           <p id="spotify-artist"></p>
+
         </div>
+
         <span>♡</span>
+
       </div>
 
       <input id="spotify-progress" type="range"
+
              min="0" max="100" value="0"
+
              oninput="spotifySeek(this.value)">
 
       <div class="spotify-times">
+
         <span id="spotify-current">0:00</span>
+
         <span id="spotify-duration">0:00</span>
+
       </div>
 
       <div class="spotify-controls">
+
         <button onclick="spotifyPrevious()">⏮</button>
+
         <button id="spotify-main-toggle" onclick="spotifyToggle()">▶</button>
+
         <button onclick="spotifyNext()">⏭</button>
+
       </div>
 
       <div class="spotify-volume">
+
         <span>🔈</span>
+
         <input type="range" min="0" max="1" step="0.01"
+
                value="0.7" oninput="spotifySetVolume(this.value)">
+
         <span>🔊</span>
+
       </div>
+
     </div>
 
   </div>
 
   <audio id="spotify-audio" preload="metadata"></audio>
+
 </section>
 
 <!-- ===== PHOTOS APP ===== -->
+
 <section id="photos-app" class="screen photos-screen">
 
   <div class="photos-header">
+
     <button onclick="goHome()">‹ Home</button>
+
     <h2>Photos</h2>
+
     <span></span>
+
   </div>
 
   <div class="photos-content">
+
     <h3>Library</h3>
+
     <div id="photos-grid" class="photos-grid"></div>
+
   </div>
 
   <div id="photos-viewer" class="photos-viewer" hidden>
+
     <button class="photos-back" onclick="closePhoto()">‹ Back</button>
+
     <img id="photos-full-image" alt="Selected photo">
+
   </div>
 
 </section>
 
-
 <!-- ===== MESSAGES APP ===== -->
+
 <section id="messages-app" class="screen messages-screen">
 
   <!-- หน้ารายชื่อแชท -->
+
   <div id="messages-list-page" class="messages-page">
+
     <header class="messages-list-header">
+
       <button onclick="goHome()">‹ Home</button>
+
       <h1>Messages</h1>
+
     </header>
 
     <div class="messages-search">
+
       <input id="messages-search-input"
+
         type="search" placeholder="Search">
+
     </div>
 
     <div id="messages-conversations"
+
       class="messages-conversations"></div>
+
   </div>
 
   <!-- หน้าห้องแชท -->
+
   <div id="messages-chat-page" class="messages-page" hidden>
 
     <header class="messages-chat-header">
+
       <button onclick="showMessagesList()">‹</button>
+
       <img id="messages-contact-photo" alt="Contact">
+
       <div class="messages-contact-details">
+
         <strong id="messages-contact-name"></strong>
+
         <small>iMessage</small>
+
       </div>
+
     </header>
 
     <div id="messages-chat" class="messages-chat"></div>
 
     <form id="messages-form" class="messages-compose">
+
       <input id="messages-input"
+
         type="text"
+
         placeholder="iMessage"
+
         autocomplete="off">
+
       <button type="submit" aria-label="Send">↑</button>
+
     </form>
+
   </div>
 
 </section>
 
   <!-- OTHER APPS -->
+
   <section id="other-app" class="screen app-screen">
+
     <div class="app-header">
+
       <button onclick="goHome()">‹ Home</button>
+
     </div>
+
     <h1 id="other-title">App</h1>
+
     <p id="other-description">
+
       This app is coming soon ♡
+
     </p>
+
   </section>
 
   <button class="home-button"
+
           onclick="goHome()"
+
           aria-label="Go Home">
+
     <span class="home-indicator"></span>
+
   </button>
 
 </div>
 
 <script src="./script.js"></script>
+
 </body>
+
 </html>
