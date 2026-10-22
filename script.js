@@ -397,6 +397,31 @@ const ringtone = document.getElementById("ringtone");
 
 const voiceAudio = document.getElementById("voice-audio");
 
+let voicePrepared = false;
+
+async function prepareCallVoice() {
+  if (!voiceAudio) return;
+
+  voicePrepared = false;
+
+  try {
+    voiceAudio.muted = false;
+    voiceAudio.volume = 1;
+    voiceAudio.currentTime = 0;
+
+    // เริ่มเล่นจากการกดโทรออกโดยตรง
+    await voiceAudio.play();
+
+    // หยุดทันทีเพื่อรอเวลารับสาย
+    voiceAudio.pause();
+    voiceAudio.currentTime = 0;
+
+    voicePrepared = true;
+  } catch (error) {
+    console.warn("Voice preparation failed:", error);
+  }
+}
+
 function setPhoneStatus(text) {
 
   document.getElementById("call-status").textContent = text;
@@ -416,6 +441,8 @@ function setPhoneButton(id, visible) {
 function startCall() {
 
   resetCallScreen();
+  
+  prepareCallVoice();
 
   phoneCallState = "calling";
 
@@ -453,71 +480,42 @@ function startCall() {
 
 // รับสายอัตโนมัติ
 
-function answerCall() {
 
+function answerCall() {
   if (phoneCallState !== "calling") return;
 
   phoneCallState = "connected";
 
   ringtone.pause();
-
   ringtone.currentTime = 0;
 
   setPhoneStatus("Connected");
 
   document.getElementById("phone-options")
-
     .classList.remove("hidden");
 
   setPhoneButton("call-answer", false);
 
   callSeconds = 0;
-
   updateCallTimer();
 
   callDurationTimer = setInterval(() => {
-
     callSeconds++;
-
     updateCallTimer();
-
   }, 1000);
 
-  // ตรวจสอบและเล่นเสียงหลังรับสาย
+  // เล่นเสียง voice.mp3 หลังเชื่อมต่อสาย
+  if (voiceAudio) {
+    voiceAudio.muted = false;
+    voiceAudio.volume = 1;
+    voiceAudio.currentTime = 0;
 
-  const callVoice = document.getElementById("voice-audio");
-
-  if (callVoice) {
-
-    console.log("Voice file:", callVoice.currentSrc || callVoice.src);
-
-    callVoice.muted = false;
-
-    callVoice.volume = 1;
-
-    callVoice.currentTime = 0;
-
-    callVoice.play()
-
-      .then(() => {
-
-        console.log("Voice audio started");
-
-      })
-
-      .catch(error => {
-
-        console.error("Voice audio error:", error);
-
-      });
-
-  } else {
-
-    console.error("Cannot find voice-audio element");
-
+    voiceAudio.play().catch(error => {
+      console.error("Voice audio error:", error);
+    });
   }
-
 }
+
 
 // อัปเดตเวลาโทร
 
